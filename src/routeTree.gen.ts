@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StoryRouteImport } from './routes/story'
+import { Route as TechniqueRouteImport } from './routes/technique'
+import { Route as ApiCoachRouteImport } from './routes/api/coach'
+import { Route as SkillsIndexRouteImport } from './routes/skills.index'
+import { Route as SkillsSlugRouteImport } from './routes/skills.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechniqueRoute = TechniqueRouteImport.update({
+  id: '/technique',
+  path: '/technique',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiCoachRoute = ApiCoachRouteImport.update({
+  id: '/api/coach',
+  path: '/api/coach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsIndexRoute = SkillsIndexRouteImport.update({
+  id: '/skills/',
+  path: '/skills/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsSlugRoute = SkillsSlugRouteImport.update({
+  id: '/skills/$slug',
+  path: '/skills/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/story': typeof StoryRoute
+  '/technique': typeof TechniqueRoute
+  '/api/coach': typeof ApiCoachRoute
+  '/skills/$slug': typeof SkillsSlugRoute
+  '/skills/': typeof SkillsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/story': typeof StoryRoute
+  '/technique': typeof TechniqueRoute
+  '/api/coach': typeof ApiCoachRoute
+  '/skills/$slug': typeof SkillsSlugRoute
+  '/skills': typeof SkillsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/story': typeof StoryRoute
+  '/technique': typeof TechniqueRoute
+  '/api/coach': typeof ApiCoachRoute
+  '/skills/$slug': typeof SkillsSlugRoute
+  '/skills/': typeof SkillsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/story' | '/technique' | '/api/coach' | '/skills/$slug' | '/skills/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/story' | '/technique' | '/api/coach' | '/skills/$slug' | '/skills'
+  id:
+    | '__root__'
+    | '/'
+    | '/story'
+    | '/technique'
+    | '/api/coach'
+    | '/skills/$slug'
+    | '/skills/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  StoryRoute: typeof StoryRoute
+  TechniqueRoute: typeof TechniqueRoute
+  ApiCoachRoute: typeof ApiCoachRoute
+  SkillsSlugRoute: typeof SkillsSlugRoute
+  SkillsIndexRoute: typeof SkillsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technique': {
+      id: '/technique'
+      path: '/technique'
+      fullPath: '/technique'
+      preLoaderRoute: typeof TechniqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/coach': {
+      id: '/api/coach'
+      path: '/api/coach'
+      fullPath: '/api/coach'
+      preLoaderRoute: typeof ApiCoachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills/': {
+      id: '/skills/'
+      path: '/skills'
+      fullPath: '/skills/'
+      preLoaderRoute: typeof SkillsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills/$slug': {
+      id: '/skills/$slug'
+      path: '/skills/$slug'
+      fullPath: '/skills/$slug'
+      preLoaderRoute: typeof SkillsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  StoryRoute: StoryRoute,
+  TechniqueRoute: TechniqueRoute,
+  ApiCoachRoute: ApiCoachRoute,
+  SkillsSlugRoute: SkillsSlugRoute,
+  SkillsIndexRoute: SkillsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

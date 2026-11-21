@@ -28,3 +28,17 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Skill content (prerequisites, technique, steps, breakdown, tips) lives in `src/data/skills.ts` as one ordered array; pages and the AI coach prompt read from it so the order and content stay in one place.
+- Wrong/right technique videos are mapped per skill slug in `src/data/videos.ts`; empty slots render a "coming soon" state.
+- The AI coach streams plain text from the `/api/coach` server route via `@lovable.dev/ai-gateway`; the key never reaches the browser.
+- Mobile-first shell: `__root.tsx` wraps pages in a max-w-md column with a fixed bottom tab bar.
+
+## Project rules
+
+- Skill content (prerequisites, technique, steps, breakdown, tips) lives in `src/data/skills.ts` as one ordered array; pages and the AI coach prompt read from it so order and content stay in one place.
+- Wrong/right technique videos are mapped per skill slug in `src/data/videos.ts`; empty slots render a "coming soon" state.
+- The AI coach streams plain text from the `/api/coach` server route via `@lovable.dev/ai-gateway`, keeping the key off the browser.
+- Mobile-first shell: `__root.tsx` wraps pages in a max-w-md column with a fixed bottom tab bar.
