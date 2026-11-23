@@ -12,12 +12,14 @@ export const Route = createFileRoute("/skills/")({
       { title: "Скилове по калистеника – от лицеви до предна везна | BAR SKILLS" },
       {
         name: "description",
-        content: "12 скила подредени по трудност: предпоставки, техника, стъпки и хак съвети за всеки.",
+        content:
+          "12 скила подредени по трудност: предпоставки, техника, стъпки и хак съвети за всеки.",
       },
       { property: "og:title", content: "Скилове по калистеника | BAR SKILLS" },
       {
         property: "og:description",
-        content: "12 скила подредени по трудност: предпоставки, техника, стъпки и хак съвети за всеки.",
+        content:
+          "12 скила подредени по трудност: предпоставки, техника, стъпки и хак съвети за всеки.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,7 +47,9 @@ function SkillsPage() {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div className="min-w-0 flex-1">
-                <p className="truncate font-display text-[15px] font-bold leading-tight">{s.name}</p>
+                <p className="truncate font-display text-[15px] font-bold leading-tight">
+                  {s.name}
+                </p>
                 <p className="mt-1 truncate text-xs text-muted-foreground">{s.tagline}</p>
               </div>
               <div className="flex flex-col items-end gap-2">

@@ -101,7 +101,9 @@ function CoachPage() {
             <Bot className="size-5" />
           </div>
           <div>
-            <p className="font-display text-sm font-bold leading-none tracking-tight">{brand.appName}</p>
+            <p className="font-display text-sm font-bold leading-none tracking-tight">
+              {brand.appName}
+            </p>
             <p className="mt-1 text-xs text-muted-foreground">AI Coach · онлайн</p>
           </div>
         </div>
@@ -123,13 +125,15 @@ function CoachPage() {
       <div className="flex-1 px-5">
         {empty ? (
           <div className="animate-rise pt-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">AI помощник</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              AI помощник
+            </p>
             <h1 className="mt-3 text-[2.1rem] font-bold leading-[1.02]">
               Твоят треньор <span className="text-gradient-primary">на лоста</span>, 24/7.
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Кажи ми какво можеш сега и към кой скил гониш – ще ти кажа откъде да започнеш и
-              какво да тренираш.
+              Кажи ми какво можеш сега и към кой скил гониш – ще ти кажа откъде да започнеш и какво
+              да тренираш.
             </p>
             <div className="mt-8 grid gap-2.5">
               {suggestions.map((s) => (
@@ -147,10 +151,7 @@ function CoachPage() {
         ) : (
           <ol className="space-y-4 py-6">
             {messages.map((m, i) => (
-              <li
-                key={i}
-                className={m.role === "user" ? "flex justify-end" : "flex justify-start"}
-              >
+              <li key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
                 <div
                   className={
                     m.role === "user"
@@ -183,7 +184,10 @@ function CoachPage() {
 
       <div className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] px-4 pt-3">
         {error && (
-          <p role="alert" className="mb-2 rounded-xl bg-destructive/15 px-3 py-2 text-xs text-destructive">
+          <p
+            role="alert"
+            className="mb-2 rounded-xl bg-destructive/15 px-3 py-2 text-xs text-destructive"
+          >
             {error}
           </p>
         )}

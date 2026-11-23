@@ -2,7 +2,9 @@ import { skills } from "@/data/skills";
 
 export function buildCoachInstructions(): string {
   const roadmap = skills
-    .map((s, i) => `${i + 1}. ${s.name} (${s.nameEn}) – предпоставки: ${s.prerequisites.join("; ")}`)
+    .map(
+      (s, i) => `${i + 1}. ${s.name} (${s.nameEn}) – предпоставки: ${s.prerequisites.join("; ")}`,
+    )
     .join("\n");
   return [
     "Ти си AI треньор по калистеника в приложението BAR SKILLS. Отговаряй винаги на български, кратко, ясно и мотивиращо – като приятел-треньор на лоста.",

@@ -26,7 +26,15 @@ export const Route = createFileRoute("/technique")({
   component: TechniquePage,
 });
 
-function VideoSlot({ kind, src, skill }: { kind: "wrong" | "right"; src: string | undefined; skill: Skill }) {
+function VideoSlot({
+  kind,
+  src,
+  skill,
+}: {
+  kind: "wrong" | "right";
+  src: string | undefined;
+  skill: Skill;
+}) {
   const isWrong = kind === "wrong";
   return (
     <article
@@ -52,7 +60,9 @@ function VideoSlot({ kind, src, skill }: { kind: "wrong" | "right"; src: string 
           {isWrong ? "Грешно" : "Правилно"}
         </span>
       </div>
-      <p className="p-4 text-sm leading-relaxed text-card-foreground">{isWrong ? skill.wrong : skill.right}</p>
+      <p className="p-4 text-sm leading-relaxed text-card-foreground">
+        {isWrong ? skill.wrong : skill.right}
+      </p>
     </article>
   );
 }

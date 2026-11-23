@@ -12,7 +12,9 @@ export const Route = createFileRoute("/skills/$slug")({
     return { skill };
   },
   head: ({ loaderData }) => {
-    const title = loaderData ? `${loaderData.skill.name} – техника и стъпки | BAR SKILLS` : "Скил | BAR SKILLS";
+    const title = loaderData
+      ? `${loaderData.skill.name} – техника и стъпки | BAR SKILLS`
+      : "Скил | BAR SKILLS";
     const description = loaderData
       ? `${loaderData.skill.tagline} Предпоставки, техника, стъпки и хак съвети.`
       : "Скил по калистеника.";
@@ -42,7 +44,10 @@ function SkillPage() {
   return (
     <div className="animate-rise" key={skill.slug}>
       <div className="px-5 pt-6">
-        <Link to="/skills" className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground">
+        <Link
+          to="/skills"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground"
+        >
           <ArrowLeft className="size-4" /> Всички скилове
         </Link>
       </div>
@@ -55,7 +60,9 @@ function SkillPage() {
           <LevelBadge level={skill.level} />
         </div>
         <h1 className="mt-3 text-[2rem] font-extrabold leading-[1.02]">{skill.name}</h1>
-        <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">{skill.nameEn}</p>
+        <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          {skill.nameEn}
+        </p>
         <p className="mt-3 text-sm text-muted-foreground">{skill.tagline}</p>
       </header>
 
@@ -74,21 +81,33 @@ function SkillPage() {
           ))}
         </ul>
         <p className="mt-4 text-xs text-muted-foreground">
-          Не ги покриваш още? Тренирай ги и се върни на скила – така няма контузии и прогресът е по-бърз.
+          Не ги покриваш още? Тренирай ги и се върни на скила – така няма контузии и прогресът е
+          по-бърз.
         </p>
       </section>
 
       <Tabs defaultValue="technique" className="mt-6 px-5">
         <TabsList className="flex h-auto w-full gap-1 rounded-2xl border border-border bg-card p-1">
-          <TabsTrigger value="technique" className={tabTrigger}>Техника</TabsTrigger>
-          <TabsTrigger value="steps" className={tabTrigger}>Стъпки</TabsTrigger>
-          <TabsTrigger value="breakdown" className={tabTrigger}>Разбивка</TabsTrigger>
-          <TabsTrigger value="hacks" className={tabTrigger}>Хак tips</TabsTrigger>
+          <TabsTrigger value="technique" className={tabTrigger}>
+            Техника
+          </TabsTrigger>
+          <TabsTrigger value="steps" className={tabTrigger}>
+            Стъпки
+          </TabsTrigger>
+          <TabsTrigger value="breakdown" className={tabTrigger}>
+            Разбивка
+          </TabsTrigger>
+          <TabsTrigger value="hacks" className={tabTrigger}>
+            Хак tips
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="technique" className="mt-4 space-y-2.5">
           {skill.technique.map((t, i) => (
-            <div key={t} className="flex gap-3 rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed shadow-card">
+            <div
+              key={t}
+              className="flex gap-3 rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed shadow-card"
+            >
               <span className="font-display text-sm font-bold text-primary">{i + 1}</span>
               <p>{t}</p>
             </div>
@@ -125,7 +144,9 @@ function SkillPage() {
         <TabsContent value="breakdown" className="mt-4 grid grid-cols-2 gap-2.5">
           {skill.breakdown.map((b, i) => (
             <div key={b.phase} className="rounded-2xl border border-border bg-card p-4 shadow-card">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Фаза {i + 1}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Фаза {i + 1}
+              </p>
               <p className="mt-1 font-display text-sm font-bold text-primary">{b.phase}</p>
               <p className="mt-2 text-sm leading-snug">{b.cue}</p>
             </div>
@@ -146,18 +167,35 @@ function SkillPage() {
 
       <nav className="mt-8 grid grid-cols-2 gap-2.5 px-5">
         {prev ? (
-          <Link to="/skills/$slug" params={{ slug: prev.slug }} className="rounded-2xl border border-border bg-card/70 p-4 hover:border-primary/60">
-            <span className="flex items-center gap-1 text-[11px] text-muted-foreground"><ArrowLeft className="size-3" /> Предишен</span>
+          <Link
+            to="/skills/$slug"
+            params={{ slug: prev.slug }}
+            className="rounded-2xl border border-border bg-card/70 p-4 hover:border-primary/60"
+          >
+            <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <ArrowLeft className="size-3" /> Предишен
+            </span>
             <span className="mt-1 block truncate font-display text-sm font-bold">{prev.name}</span>
           </Link>
-        ) : <span />}
+        ) : (
+          <span />
+        )}
         {next ? (
-          <Link to="/skills/$slug" params={{ slug: next.slug }} className="rounded-2xl border border-border bg-card/70 p-4 text-right hover:border-primary/60">
-            <span className="flex items-center justify-end gap-1 text-[11px] text-muted-foreground">Следващ <ArrowRight className="size-3" /></span>
+          <Link
+            to="/skills/$slug"
+            params={{ slug: next.slug }}
+            className="rounded-2xl border border-border bg-card/70 p-4 text-right hover:border-primary/60"
+          >
+            <span className="flex items-center justify-end gap-1 text-[11px] text-muted-foreground">
+              Следващ <ArrowRight className="size-3" />
+            </span>
             <span className="mt-1 block truncate font-display text-sm font-bold">{next.name}</span>
           </Link>
         ) : (
-          <Link to="/story" className="rounded-2xl bg-gradient-primary p-4 text-right text-primary-foreground shadow-glow">
+          <Link
+            to="/story"
+            className="rounded-2xl bg-gradient-primary p-4 text-right text-primary-foreground shadow-glow"
+          >
             <span className="text-[11px] opacity-80">Финал</span>
             <span className="mt-1 block font-display text-sm font-bold">Моята история →</span>
           </Link>

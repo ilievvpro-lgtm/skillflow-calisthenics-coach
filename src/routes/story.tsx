@@ -53,7 +53,9 @@ function StoryPage() {
         />
         <div className="absolute inset-0 bg-fade-bottom" />
         <div className="absolute inset-x-0 bottom-0 animate-rise px-5 pb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">My Story · {brand.creatorName}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            My Story · {brand.creatorName}
+          </p>
           <h1 className="mt-2 text-[2.4rem] font-extrabold leading-[0.98]">
             Не съм роден <span className="text-gradient-primary">силен.</span>
           </h1>
@@ -62,7 +64,11 @@ function StoryPage() {
 
       <div className="space-y-4 px-5 pt-2">
         {chapters.map((c, i) => (
-          <article key={c.title} className="animate-rise rounded-3xl border border-border bg-card p-5 shadow-card" style={{ animationDelay: `${i * 60}ms` }}>
+          <article
+            key={c.title}
+            className="animate-rise rounded-3xl border border-border bg-card p-5 shadow-card"
+            style={{ animationDelay: `${i * 60}ms` }}
+          >
             <p className="font-display text-xs font-bold text-primary">0{i + 1}</p>
             <h2 className="mt-1 text-lg font-bold">{c.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
