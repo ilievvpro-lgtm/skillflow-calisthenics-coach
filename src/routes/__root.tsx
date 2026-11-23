@@ -8,10 +8,9 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { BottomNav } from "../components/app/BottomNav";
 
 function NotFoundComponent() {
@@ -20,9 +19,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Страницата не е намерена</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Тази страница не съществува.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">Тази страница не съществува.</p>
         <div className="mt-6">
           <Link
             to="/"
@@ -39,18 +36,15 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Страницата не се зареди
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Нещо се обърка. Опитай отново или се върни към началото.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -60,7 +54,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Опитай пак
           </button>
           <a
             href="/"
@@ -76,17 +70,20 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    // Replace these placeholders with the app's name and description when first building the app.
-    // Each content route, / included, must still set its own head(). Never add og:image or
-    // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#1c1a17" },
       { title: "BAR SKILLS – калистеника стъпка по стъпка" },
-      { name: "description", content: "AI треньор, видео уроци и пътна карта за калистеника скилове." },
+      {
+        name: "description",
+        content: "AI треньор, видео уроци и пътна карта за калистеника скилове.",
+      },
       { property: "og:title", content: "BAR SKILLS – калистеника стъпка по стъпка" },
-      { property: "og:description", content: "AI треньор, видео уроци и пътна карта за калистеника скилове." },
+      {
+        property: "og:description",
+        content: "AI треньор, видео уроци и пътна карта за калистеника скилове.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
