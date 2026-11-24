@@ -1,9 +1,16 @@
 ---
 name: preview
-description: Show the app as it looks right now on a phone screen. Use when the user asks to see the app, a page, or "как изглежда".
+description: Rebuild the app and republish the live preview link (a Claude Artifact the user taps through on their phone). Run after every change, and when the user asks for the link or to try the app.
 ---
 
-1. If the dev server isn't answering on http://localhost:8080, start `bun run dev` in the background and wait until it responds.
-2. Run `node scripts/screenshot.mjs` with the paths to show (default `/`; pages: `/`, `/technique`, `/skills`, `/skills/<slug>`, `/story`). Use the arguments, if any, to pick pages.
-3. Send the PNGs from `.preview/` with SendUserFile (display: render), with a one-line Bulgarian caption per page.
-4. If this session has a draft PR, also give the Vercel preview link from its Vercel comment.
+1. Run `bun run build:artifact`. It writes `dist-artifact/index.html` and prints the other files to publish.
+2. Publish with the Artifact tool:
+   - `file_path`: `dist-artifact/index.html`
+   - `files`: each printed file mapped to itself, e.g. `{"app.js": "dist-artifact/app.js", "assets/styles.css": "dist-artifact/assets/styles.css", "assets/hero-front-lever.jpg": "dist-artifact/assets/hero-front-lever.jpg"}` (use the printed list; it changes when assets are added). Pass `null` for a published file that no longer exists.
+   - `capabilities`: `{"sample": {}}` (lets the AI coach answer through Claude).
+   - `url`: the link in `.claude/preview-link`, so the same link keeps working.
+   - first publish only: `icon: "fitness"`.
+3. If that publish is refused because the link belongs to someone else, or `.claude/preview-link` is empty, publish without `url`, then write the new link into `.claude/preview-link` and commit it.
+4. Reply in Bulgarian with one line on what to try and the link. No screenshots unless asked.
+
+The preview build is `src/artifact/` + `vite.artifact.config.ts`: the same routes and components, in-memory navigation, and `/api/coach` answered by the artifact's `sample` capability instead of the server. If a change adds something server-only, make the preview degrade gracefully instead of breaking.

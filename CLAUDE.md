@@ -16,28 +16,29 @@ experience Lovable did: they describe what they want, you build it, they see it.
 - Never ask them to paste API keys or passwords into the chat. Keys go in Vercel
   (Project → Settings → Environment Variables); tell them where to click.
 
-## Every change (the "edit → see it" loop)
+## Every change (the "edit → try it" loop)
+
+He tests the app himself by tapping through it on his phone, so every change ends with a
+fresh live link. Don't send screenshots or demo videos unless he asks for them
+(`/demo`, "покажи ми").
 
 1. Make the change. Keep the existing look: dark theme, orange accents, Unbounded/Onest
    fonts, mobile-first, Bulgarian text.
 2. Run `bun run check` (typecheck + tests + build). If it fails, fix it before going on;
    never leave the app broken.
-3. Show it: start `bun run dev` in the background if it isn't running, run
-   `node scripts/screenshot.mjs <paths of the pages you changed>`, and send the PNGs
-   from `.preview/` with SendUserFile (display: render). This is their preview window.
+3. Update the live preview with the `/preview` skill: it rebuilds the app and republishes
+   the Claude Artifact, which opens and works inside the Claude mobile app (the AI coach
+   too, answered by Claude). Reply with one or two sentences on what changed and the link.
 4. `bun run format`, then commit with a short plain message and push to this session's
    branch.
-5. After the first push of a session, open a **draft** pull request into `main` titled
-   with what they asked for. Vercel comments on it with a live preview link; give them
-   that link so they can open the app on their phone. Reuse the same PR for later pushes.
 
 ## Publishing
 
-Nothing reaches the real site until they say so. When they say "публикувай", "пусни го",
+The live preview link updates after every change; the real website (Vercel) only changes when they say so. When they say "публикувай", "пусни го",
 "publish" or similar, run the `/publish` skill: it marks the PR ready and merges it into
 `main`, and Vercel deploys the live site in about a minute.
 
 ## Undo
 
 If they say "върни", "undo" or "не ми харесва", revert your last commit(s) with
-`git revert` (never rewrite pushed history), push, and send a new screenshot.
+`git revert` (never rewrite pushed history), push, and republish the preview (`/preview`).

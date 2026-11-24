@@ -37,3 +37,6 @@ dist-ssr
 
 # Preview screenshots
 .preview
+
+# Artifact preview build
+dist-artifact

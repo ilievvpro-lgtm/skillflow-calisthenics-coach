@@ -14,7 +14,8 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "check": "tsc --noEmit && vitest run && vite build",
-    "preview:shot": "node scripts/screenshot.mjs"
+    "preview:shot": "node scripts/screenshot.mjs",
+    "build:artifact": "node scripts/build-artifact.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1",

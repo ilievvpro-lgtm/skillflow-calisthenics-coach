@@ -13,6 +13,11 @@ if ! command -v bun >/dev/null; then
   npm install -g bun
 fi
 
+# ffmpeg turns demo recordings into MP4s that play in the Claude mobile app.
+if ! command -v ffmpeg >/dev/null; then
+  (apt-get update && apt-get install -y ffmpeg) >/dev/null 2>&1 || echo "ffmpeg install failed; demos will be .webm"
+fi
+
 # Reinstall only when the dependency files change.
 hashes=node_modules/.session-start.sha256
 if ! sha256sum --check --status "$hashes" 2>/dev/null; then
