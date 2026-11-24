@@ -18,6 +18,25 @@ My Story
 
 Твоята история тва отдолу нека да го обсъдим и покажи
 
+## Как да продължиш с Claude (вместо Lovable)
+
+Работи като в Lovable: пишеш какво искаш, Claude го прави и ти показва снимка от телефона, а после пускаш промените на живия сайт с една дума.
+
+**Еднократна настройка (около 10 минути):**
+
+1. **Claude в GitHub.** Отвори https://github.com/apps/claude/installations/select_target, избери акаунта `ilievvpro-lgtm` и дай достъп до `skillflow-calisthenics-coach`.
+2. **Сайтът във Vercel.** Влез в https://vercel.com с GitHub, натисни **Add New → Project**, избери `skillflow-calisthenics-coach` и **Deploy**. Оттук нататък всяка промяна в `main` излиза на живо сама.
+3. **AI треньорът.** Във Vercel работи без ключ (през безплатните кредити на Vercel AI Gateway). Ако искаш да ползва Anthropic ключ: Vercel → проекта → **Settings → Environment Variables** → добави `ANTHROPIC_API_KEY`.
+4. **Спри да редактираш в Lovable**, за да няма две места, които променят кода.
+
+**Всеки ден:**
+
+1. Отвори https://claude.ai/code (или приложението Claude → Code) и избери `skillflow-calisthenics-coach`.
+2. Напиши какво искаш, например „направи бутоните на скиловете по-големи“.
+3. Claude прави промяната, проверява, че нищо не е счупено, и ти праща снимка. Дава ти и линк за преглед на телефона.
+4. Харесва ли ти, напиши **„публикувай“**: промяната излиза на живия сайт. Не ти ли харесва, напиши **„върни“**.
+5. **/preview** показва как изглежда приложението в момента.
+
 ## Stack
 
 TanStack Start (React 19) + Tailwind v4, built with Vite and Nitro, deployed on Vercel.
