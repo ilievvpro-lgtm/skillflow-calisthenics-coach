@@ -1,4 +1,4 @@
-export type SkillLevel = "Основа" | "Начинаещ+" | "Среден" | "Среден+" | "Напреднал";
+export type SkillLevel = "Foundation" | "Beginner+" | "Intermediate" | "Intermediate+" | "Advanced";
 
 export interface ProgressionStep {
   title: string;
@@ -28,462 +28,801 @@ export interface Skill {
   right: string;
 }
 
-/** Ordered from easiest to hardest – the order the app teaches them in. */
+/** Ordered from easiest to hardest in the creator's teaching sequence. */
 export const skills: Skill[] = [
   {
-    slug: "pushup",
-    name: "Лицеви опори",
-    nameEn: "Push-up",
-    level: "Основа",
-    tagline: "Фундаментът на всяко бутане.",
-    prerequisites: ["30 сек. права планка без провисване", "10 лицеви от колене с чиста форма"],
-    technique: [
-      "Ръцете малко по-широко от раменете, пръстите напред.",
-      "Тялото е една права линия – стегнат корем и седалище.",
-      "Лактите отиват назад под ~45°, не встрани.",
-      "Гърдите докосват пода, после натискаш пода „надалеч“ от теб.",
+    "slug": "pushup",
+    "name": "Push-up",
+    "nameEn": "Push-up",
+    "level": "Foundation",
+    "tagline": "The foundation of every pushing movement.",
+    "prerequisites": [
+      "30-second straight plank without sagging",
+      "10 clean knee push-ups"
     ],
-    steps: [
+    "technique": [
+      "Place your hands slightly wider than your shoulders, fingers forward.",
+      "Keep one straight body line: brace your core and glutes.",
+      "Move your elbows back at about 45°, not out to the sides.",
+      "Bring your chest to the floor, then push the floor away."
+    ],
+    "steps": [
       {
-        title: "Лицеви на стена",
-        detail: "Учиш линията на тялото без натоварване.",
-        target: "3 × 20",
+        "title": "Wall push-ups",
+        "detail": "Learn a straight body line with less load.",
+        "target": "3 × 20"
       },
       {
-        title: "Наклонени лицеви",
-        detail: "Ръце на пейка или лост на ниво кръст.",
-        target: "3 × 15",
+        "title": "Incline push-ups",
+        "detail": "Place your hands on a bench or waist-high bar.",
+        "target": "3 × 15"
       },
-      { title: "Лицеви от колене", detail: "Пълна амплитуда, гърди до пода.", target: "3 × 15" },
       {
-        title: "Негативни лицеви",
-        detail: "Спускане за 3–4 сек., ставаш от колене.",
-        target: "3 × 8",
+        "title": "Knee push-ups",
+        "detail": "Use full range of motion, chest to the floor.",
+        "target": "3 × 15"
       },
-      { title: "Пълни лицеви", detail: "Чиста форма, без провисване на кръста.", target: "3 × 20" },
+      {
+        "title": "Negative push-ups",
+        "detail": "Lower for 3–4 seconds, then return from your knees.",
+        "target": "3 × 8"
+      },
+      {
+        "title": "Full push-ups",
+        "detail": "Keep clean form without sagging at the lower back.",
+        "target": "3 × 20"
+      }
     ],
-    breakdown: [
-      { phase: "Старт", cue: "Права планка, раменете над китките." },
-      { phase: "Спускане", cue: "2 сек. надолу, лактите назад." },
-      { phase: "Долу", cue: "Гърдите докосват, тялото не пада първо с кръста." },
-      { phase: "Избутване", cue: "Натискаш пода и разтваряш лопатките горе." },
+    "breakdown": [
+      {
+        "phase": "Setup",
+        "cue": "Straight plank, shoulders over wrists."
+      },
+      {
+        "phase": "Lower",
+        "cue": "Take 2 seconds down with elbows moving back."
+      },
+      {
+        "phase": "Bottom",
+        "cue": "Chest touches first; do not lead with your lower back."
+      },
+      {
+        "phase": "Push",
+        "cue": "Press the floor away and spread your shoulder blades at the top."
+      }
     ],
-    hacks: [
-      "Стисни седалището – кръстът спира да провисва моментално.",
-      "Гледай на 20 см пред ръцете, не между тях.",
-      "Записвай се отстрани – виждаш линията на тялото веднага.",
+    "hacks": [
+      "Squeeze your glutes to stop your lower back from sagging.",
+      "Look about 20 cm in front of your hands, not between them.",
+      "Practice half repetitions until you can perform clean full push-ups."
     ],
-    wrong: "Провиснал кръст, лакти встрани и половин амплитуда.",
-    right: "Права линия, лакти на 45°, гърди до пода.",
+    "wrong": "Retracted shoulder blades, raised hips and elbows flaring out.",
+    "right": "Protracted shoulder blades, elbows tucked and glutes engaged."
   },
   {
-    slug: "dips",
-    name: "Кофички",
-    nameEn: "Dips",
-    level: "Основа",
-    tagline: "Сила в трицепса и гърдите за всичко над лоста.",
-    prerequisites: ["15 чисти лицеви опори", "30 сек. задържане горе на успоредка"],
-    technique: [
-      "Раменете надолу и далеч от ушите през цялото време.",
-      "Леко наклонено напред тяло, краката отзад.",
-      "Спускаш се докато рамото е малко под лакътя.",
-      "Изпъваш ръцете напълно горе и натискаш надолу.",
+    "slug": "dips",
+    "name": "Dips",
+    "nameEn": "Dips",
+    "level": "Foundation",
+    "tagline": "Chest and triceps strength for everything above the bar.",
+    "prerequisites": [
+      "15 clean push-ups",
+      "30-second parallel-bar support hold"
     ],
-    steps: [
-      { title: "Задържане горе", detail: "Изпънати ръце, рамене надолу.", target: "3 × 30 сек." },
+    "technique": [
+      "Keep your shoulders down and away from your ears throughout.",
+      "Lean slightly forward with your legs behind you.",
+      "Lower until your shoulders are just below your elbows.",
+      "Fully straighten your arms at the top and press down."
+    ],
+    "steps": [
       {
-        title: "Кофички на пейка",
-        detail: "Краката на земята, пълна амплитуда.",
-        target: "3 × 15",
+        "title": "Support hold",
+        "detail": "Straight arms, shoulders down.",
+        "target": "3 × 30 sec"
       },
-      { title: "Негативни кофички", detail: "Спускане за 4 сек. на успоредка.", target: "3 × 6" },
-      { title: "Кофички с ластик", detail: "Ластик под коленете.", target: "3 × 10" },
-      { title: "Пълни кофички", detail: "Контролирано, без подскачане долу.", target: "3 × 12" },
+      {
+        "title": "Bench dips",
+        "detail": "Feet on the ground, full range of motion.",
+        "target": "3 × 15"
+      },
+      {
+        "title": "Negative dips",
+        "detail": "Lower on parallel bars for 4 seconds.",
+        "target": "3 × 6"
+      },
+      {
+        "title": "Band-assisted dips",
+        "detail": "Place a resistance band under your knees.",
+        "target": "3 × 10"
+      },
+      {
+        "title": "Full dips",
+        "detail": "Stay controlled without bouncing at the bottom.",
+        "target": "3 × 12"
+      }
     ],
-    breakdown: [
-      { phase: "Горе", cue: "Заключени лакти, рамене надолу." },
-      { phase: "Спускане", cue: "Наклон напред, лактите назад." },
-      { phase: "Долу", cue: "Рамото малко под лакътя – не по-ниско." },
-      { phase: "Избутване", cue: "Бутай успоредката към пода." },
+    "breakdown": [
+      {
+        "phase": "Top",
+        "cue": "Locked elbows, shoulders down."
+      },
+      {
+        "phase": "Lower",
+        "cue": "Lean forward, elbows moving back."
+      },
+      {
+        "phase": "Bottom",
+        "cue": "Shoulders just below elbows, no deeper."
+      },
+      {
+        "phase": "Push",
+        "cue": "Press the parallel bars toward the ground."
+      }
     ],
-    hacks: [
-      "Мисли „дълъг врат“ – спира раменете да се качват към ушите.",
-      "Кръстосай краката отзад – тялото става по-стабилно.",
-      "Ако те боли предното рамо – намали амплитудата и се наклони повече.",
+    "hacks": [
+      "Think “long neck” to keep your shoulders away from your ears.",
+      "Cross your legs behind you for a more stable body position.",
+      "If the front of your shoulder hurts, reduce depth and adjust your forward lean."
     ],
-    wrong: "Рамене до ушите, твърде дълбоко спускане, люлеене.",
-    right: "Рамене долу, контролирана дълбочина, пълно изпъване горе.",
+    "wrong": "Shoulders up by the ears, lowering beyond 90° and shoulder-blade retraction.",
+    "right": "Protracted shoulder blades, depressed shoulders and lowering to 90°."
   },
   {
-    slug: "pullup",
-    name: "Набирания",
-    nameEn: "Pull-up",
-    level: "Основа",
-    tagline: "Царят на дърпането. Ключ към muscle-up и везните.",
-    prerequisites: ["30 сек. активно висене на лоста", "3 × 10 австралийски набирания"],
-    technique: [
-      "Хват на ширината на раменете или малко по-широк.",
-      "Започваш с активно висене – лопатките надолу.",
-      "Дърпаш лактите към джобовете, не ръцете към лоста.",
-      "Брадичката минава над лоста, после контролирано надолу.",
+    "slug": "pullup",
+    "name": "Pull-up",
+    "nameEn": "Pull-up",
+    "level": "Foundation",
+    "tagline": "The king of pulling. Your key to muscle-ups and levers.",
+    "prerequisites": [
+      "30-second active hang",
+      "3 × 10 inverted rows"
     ],
-    steps: [
+    "technique": [
+      "Use a shoulder-width grip or slightly wider.",
+      "Start from an active hang with shoulder blades pulled down.",
+      "Pull your elbows toward your pockets, not your hands toward the bar.",
+      "Bring your chin above the bar, then lower under control."
+    ],
+    "steps": [
       {
-        title: "Активно висене",
-        detail: "Висиш и стягаш лопатките надолу.",
-        target: "3 × 20 сек.",
+        "title": "Active hang",
+        "detail": "Hang while pulling your shoulder blades down.",
+        "target": "3 × 20 sec"
       },
       {
-        title: "Австралийски набирания",
-        detail: "Тялото под ниския лост, гърди към лоста.",
-        target: "3 × 12",
+        "title": "Inverted rows",
+        "detail": "Position your body under a low bar, chest toward the bar.",
+        "target": "3 × 12"
       },
       {
-        title: "Негативни набирания",
-        detail: "Скачаш горе, спускаш се за 5 сек.",
-        target: "3 × 5",
+        "title": "Negative pull-ups",
+        "detail": "Jump to the top, then lower for 5 seconds.",
+        "target": "3 × 5"
       },
-      { title: "Набирания с ластик", detail: "Намаляваш ластика всяка седмица.", target: "3 × 8" },
-      { title: "Пълни набирания", detail: "Без кипинг, пълна амплитуда.", target: "3 × 10" },
+      {
+        "title": "Band-assisted pull-ups",
+        "detail": "Reduce band assistance each week.",
+        "target": "3 × 8"
+      },
+      {
+        "title": "Full pull-ups",
+        "detail": "No kipping; use full range of motion.",
+        "target": "3 × 10"
+      }
     ],
-    breakdown: [
-      { phase: "Висене", cue: "Лопатките надолу, корем стегнат." },
-      { phase: "Старт", cue: "Лактите надолу към ребрата." },
-      { phase: "Горе", cue: "Брадичка над лоста, гърди към него." },
-      { phase: "Спускане", cue: "2–3 сек. до пълно изпъване." },
+    "breakdown": [
+      {
+        "phase": "Hang",
+        "cue": "Shoulder blades down, core braced."
+      },
+      {
+        "phase": "Initiate",
+        "cue": "Drive elbows down toward your ribs."
+      },
+      {
+        "phase": "Top",
+        "cue": "Chin above the bar, chest approaching it."
+      },
+      {
+        "phase": "Lower",
+        "cue": "Take 2–3 seconds to reach full extension."
+      }
     ],
-    hacks: [
-      "Стисни лоста максимално силно – гърбът се включва повече.",
-      "Пъхни краката леко напред (hollow) – спира люлеенето.",
-      "Правиш 1 повторение на всяко минаване покрай лоста – „greasing the groove“.",
+    "hacks": [
+      "Grip the bar firmly to engage your back more.",
+      "Brace your core on every pull-up to prevent swinging.",
+      "Do one repetition whenever you pass the bar: “greasing the groove.”"
     ],
-    wrong: "Половин амплитуда, ритане с крака, брадичка не стига лоста.",
-    right: "От пълно висене до брадичка над лоста, без люлеене.",
+    "wrong": "Elbows tucked inward, relaxed core and swinging legs.",
+    "right": "Elbows outward, chest lifted, legs straight and engaged, core braced."
   },
   {
-    slug: "elbow-lever",
-    name: "Elbow Lever",
-    nameEn: "Elbow lever",
-    level: "Начинаещ+",
-    tagline: "Първият ти баланс – тялото хоризонтално върху лактите.",
-    prerequisites: ["20 лицеви опори", "30 сек. права планка", "Здрави китки без болка"],
-    technique: [
-      "Пръстите сочат към краката, лактите опрени в корема до тазобедрените кости.",
-      "Накланяш се напред, докато краката се вдигнат сами.",
-      "Тялото е изпънато като дъска, погледът напред.",
+    "slug": "elbow-lever",
+    "name": "Elbow Lever",
+    "nameEn": "Elbow lever",
+    "level": "Beginner+",
+    "tagline": "Your first balance: a horizontal body supported on your elbows.",
+    "prerequisites": [
+      "20 push-ups",
+      "30-second straight plank",
+      "Healthy, pain-free wrists"
     ],
-    steps: [
+    "technique": [
+      "Point your fingers toward your feet and place your elbows on your lower abdomen near your hip bones.",
+      "Lean forward until your feet lift naturally.",
+      "Keep your body straight like a plank and look forward."
+    ],
+    "steps": [
       {
-        title: "Загрявка на китки",
-        detail: "Кръгове и разтягане на четири крака.",
-        target: "2 мин.",
+        "title": "Wrist warm-up",
+        "detail": "Circle and stretch your wrists on all fours.",
+        "target": "2 min"
       },
       {
-        title: "Наклон напред",
-        detail: "Колене на земята, тежестта върху лактите.",
-        target: "3 × 15 сек.",
-      },
-      { title: "Единичен крак", detail: "Единият крак се отлепя.", target: "3 × 10 сек." },
-      { title: "Пълен elbow lever", detail: "Двата крака във въздуха.", target: "3 × 15 сек." },
-    ],
-    breakdown: [
-      { phase: "Позиция", cue: "Лактите в корема, ръцете близо една до друга." },
-      { phase: "Наклон", cue: "Раменете отиват пред ръцете." },
-      { phase: "Отлепяне", cue: "Стегни седалището и изпъни краката." },
-      { phase: "Задържане", cue: "Дишай, малки корекции с пръстите." },
-    ],
-    hacks: [
-      "Пробвай първо на успоредка ниско – по-лесно е за китките.",
-      "Колкото по-близо са ръцете, толкова по-стабилен е балансът.",
-      "Сложи възглавница отпред първите пъти – страхът изчезва.",
-    ],
-    wrong: "Лактите встрани от тялото, краката свити, пада напред.",
-    right: "Лакти в корема, изпънато тяло, поглед напред.",
-  },
-  {
-    slug: "frog-stand",
-    name: "Frog Stand",
-    nameEn: "Frog stand",
-    level: "Начинаещ+",
-    tagline: "Балансът на ръце започва от тук.",
-    prerequisites: ["Elbow lever 10 сек.", "15 лицеви опори"],
-    technique: [
-      "Ръцете на ширината на раменете, пръстите разперени.",
-      "Коленете опират отвън на лактите.",
-      "Накланяш се напред, докато краката се отлепят.",
-      "Балансираш с пръстите – натискаш с върховете, ако падаш напред.",
-    ],
-    steps: [
-      {
-        title: "Клек с ръце на пода",
-        detail: "Коленете върху лактите, краката на пода.",
-        target: "3 × 20 сек.",
-      },
-      { title: "Отлепяне на 1 крак", detail: "Пренасяш тежестта напред.", target: "3 × 8 на крак" },
-      { title: "Frog stand", detail: "Двата крака във въздуха.", target: "3 × 20 сек." },
-    ],
-    breakdown: [
-      { phase: "Позиция", cue: "Ръце, лакти свити, колене на лактите." },
-      { phase: "Наклон", cue: "Раменете пред китките." },
-      { phase: "Баланс", cue: "Пръстите работят като спирачки." },
-    ],
-    hacks: [
-      "Гледай напред, не между ръцете – иначе се претъркаляш.",
-      "Блокче под краката улеснява първите опити.",
-    ],
-    wrong: "Поглед надолу, тежест назад, пръсти без натиск.",
-    right: "Рамене пред китките, поглед напред, активни пръсти.",
-  },
-  {
-    slug: "crow-stand",
-    name: "Crow Stand",
-    nameEn: "Crow stand",
-    level: "Начинаещ+",
-    tagline: "Frog stand с изпънати ръце – истинска опора.",
-    prerequisites: ["Frog stand 20 сек.", "20 лицеви опори"],
-    technique: [
-      "Коленете опират високо на трицепса, близо до мишниците.",
-      "Ръцете са почти изпънати.",
-      "Таза високо, краката събрани.",
-    ],
-    steps: [
-      { title: "Frog stand", detail: "Стабилна основа.", target: "3 × 20 сек." },
-      {
-        title: "Колене по-високо",
-        detail: "Колене към мишниците, ръце по-прави.",
-        target: "3 × 10 сек.",
-      },
-      { title: "Crow stand", detail: "Изпънати ръце, таз високо.", target: "3 × 20 сек." },
-    ],
-    breakdown: [
-      { phase: "Позиция", cue: "Колене високо на ръцете." },
-      { phase: "Наклон", cue: "Пренасяш таза над ръцете." },
-      { phase: "Задържане", cue: "Натисни пода и закръгли гърба." },
-    ],
-    hacks: [
-      "Закръгли гърба (като котка) – получаваш повече височина.",
-      "Сложи стъпалата на блок, за да тренираш позицията.",
-    ],
-    wrong: "Свити ръце, колене ниско на лактите, нисък таз.",
-    right: "Почти прави ръце, колене високо, закръглен гръб.",
-  },
-  {
-    slug: "handstand",
-    name: "Стойка на ръце",
-    nameEn: "Handstand",
-    level: "Среден",
-    tagline: "Светът наобратно. Изисква търпение, не само сила.",
-    prerequisites: ["Crow stand 20 сек.", "30 сек. стойка с корем към стена", "Здрави китки"],
-    technique: [
-      "Ръцете на ширината на раменете, пръстите разперени.",
-      "Раменете изтласкани до ушите (елевация).",
-      "Ребрата прибрани, седалището стегнато – права линия.",
-      "Балансираш с пръстите и дланта, не с краката.",
-    ],
-    steps: [
-      { title: "Стойка с гръб към стена", detail: "Учиш силата и китките.", target: "3 × 30 сек." },
-      {
-        title: "Стойка с корем към стена",
-        detail: "Ходиш с краката по стената – учиш правата линия.",
-        target: "3 × 45 сек.",
+        "title": "Forward lean",
+        "detail": "Knees on the floor, weight supported on your elbows.",
+        "target": "3 × 15 sec"
       },
       {
-        title: "Отлепяне от стената",
-        detail: "Отлепяш единия, после двата крака.",
-        target: "10 опита",
+        "title": "Single-leg lift",
+        "detail": "Lift one foot off the floor.",
+        "target": "3 × 10 sec"
       },
-      { title: "Кик-ъп в средата", detail: "Изритваш и задържаш.", target: "20 опита / ден" },
-      { title: "Свободна стойка", detail: "Без стена.", target: "30 сек." },
-    ],
-    breakdown: [
-      { phase: "Кик-ъп", cue: "Ръце на пода, изритване с прав крак." },
-      { phase: "Подреждане", cue: "Китки – рамене – таз – глезени в една линия." },
-      { phase: "Баланс", cue: "Пръстите спират падане напред, дланта – назад." },
-      { phase: "Излизане", cue: "Падане в страни с завъртане – безопасно." },
-    ],
-    hacks: [
-      "Първо научи как да падаш – завъртане настрани. Страхът спира прогреса повече от силата.",
-      "Тренирай кратко, но всеки ден – 10 мин. дневно бият 1 час веднъж седмично.",
-      "Мисли да „бутнеш тавана“ с краката – тялото се изправя само.",
-    ],
-    wrong: "Банан форма, свити рамене, баланс с краката.",
-    right: "Права линия, рамене до ушите, баланс с пръстите.",
-  },
-  {
-    slug: "tuck-press",
-    name: "Tuck Press до стойка",
-    nameEn: "Tuck press to handstand",
-    level: "Среден+",
-    tagline: "Качваш се в стойка без скок – чиста сила и контрол.",
-    prerequisites: ["Свободна стойка 20 сек.", "Crow stand 30 сек.", "L-sit 10 сек."],
-    technique: [
-      "От crow или клек пренасяш раменете далеч пред ръцете.",
-      "Таза се качва над раменете, коленете остават прибрани.",
-      "Когато тазът е горе – изпъваш краката нагоре.",
-    ],
-    steps: [
       {
-        title: "Compression",
-        detail: "Повдигане на крака в седеж, корем към бедрата.",
-        target: "3 × 12",
-      },
-      { title: "Tuck задържане", detail: "Tuck стойка до стена.", target: "3 × 15 сек." },
-      { title: "Негативни", detail: "От стойка спускане до tuck и crow.", target: "3 × 5" },
-      { title: "Tuck press", detail: "От клек до tuck стойка.", target: "3 × 3" },
-      { title: "Press до стойка", detail: "Изпъване в пълна стойка.", target: "3 × 3" },
+        "title": "Full elbow lever",
+        "detail": "Lift both feet off the floor.",
+        "target": "3 × 15 sec"
+      }
     ],
-    breakdown: [
-      { phase: "Старт", cue: "Ръце на пода, колене към гърдите." },
-      { phase: "Наклон", cue: "Раменете много пред китките." },
-      { phase: "Качване", cue: "Тазът нагоре като въдица." },
-      { phase: "Изпъване", cue: "Краката нагоре, раменете се връщат над ръцете." },
-    ],
-    hacks: [
-      "Тренирай с ръце на блокчета – получаваш повече място за таза.",
-      "Негативите са тайното оръжие – правиш ги, докато не можеш нагоре.",
-    ],
-    wrong: "Скачане от краката, рамене назад, таз не стига горе.",
-    right: "Бавно пренасяне, рамене пред ръцете, таз над тях.",
-  },
-  {
-    slug: "hspu",
-    name: "Лицеви в стойка",
-    nameEn: "Handstand push-up",
-    level: "Напреднал",
-    tagline: "Пълно тегло над главата. Чиста сила в раменете.",
-    prerequisites: ["Стойка до стена 60 сек.", "15 кофички", "10 pike лицеви с крака на пейка"],
-    technique: [
-      "Главата и ръцете правят триъгълник на пода.",
-      "Лактите напред, не встрани.",
-      "Спускаш се до лек допир с главата, после изтласкваш.",
-    ],
-    steps: [
-      { title: "Pike лицеви", detail: "Таз високо, глава към пода.", target: "3 × 12" },
-      { title: "Pike с крака на пейка", detail: "Повече тежест на раменете.", target: "3 × 10" },
-      { title: "Негативни до стена", detail: "Спускане за 5 сек.", target: "3 × 4" },
-      { title: "HSPU до стена", detail: "Пълни повторения.", target: "3 × 5" },
-      { title: "Свободни HSPU", detail: "Без стена – топ ниво.", target: "1–3" },
-    ],
-    breakdown: [
-      { phase: "Горе", cue: "Стойка, рамене изтласкани." },
-      { phase: "Спускане", cue: "Главата отива пред ръцете – триъгълник." },
-      { phase: "Долу", cue: "Лек допир, без отпускане." },
-      { phase: "Избутване", cue: "Главата минава обратно между ръцете." },
-    ],
-    hacks: [
-      "Сложи възглавница под главата – правиш повече повторения без страх.",
-      "Лактите на 45° към стената – пазиш раменете.",
-    ],
-    wrong: "Лакти встрани, глава право надолу, банан форма.",
-    right: "Триъгълник глава–ръце, лакти напред, стегнато тяло.",
-  },
-  {
-    slug: "muscle-up",
-    name: "Силово набиране",
-    nameEn: "Muscle-up",
-    level: "Среден+",
-    tagline: "От висене до над лоста с едно движение.",
-    prerequisites: [
-      "10 набирания до гърди",
-      "15 кофички на успоредка",
-      "5 експлозивни набирания до корема",
-    ],
-    technique: [
-      "Фалшив хват или стандартен хват на ширината на раменете.",
-      "Леко замахване назад (hollow), после рязко дърпане към корема.",
-      "Над лоста завъртай китките и вкарай гърдите над него.",
-      "Завърши с права кофичка горе.",
-    ],
-    steps: [
-      { title: "Набирания до гърди", detail: "Гърдите докосват лоста.", target: "3 × 10" },
-      { title: "Експлозивни набирания", detail: "Лостът стига до корема.", target: "5 × 3" },
-      { title: "Кофички на права щанга", detail: "Учиш горната фаза.", target: "3 × 10" },
-      { title: "Негативни muscle-up", detail: "От горе бавно през прехода.", target: "3 × 3" },
-      { title: "Muscle-up с ластик", detail: "Ластикът помага в прехода.", target: "3 × 3" },
-      { title: "Пълен muscle-up", detail: "Чист, без ритане.", target: "3 × 1–3" },
-    ],
-    breakdown: [
-      { phase: "Замах", cue: "Малко hollow назад, без голямо люлеене." },
-      { phase: "Дърпане", cue: "Лостът към корема, не към брадичката." },
-      { phase: "Преход", cue: "Китките се завъртат, гърдите над лоста." },
-      { phase: "Кофичка", cue: "Изтласкваш до пълно изпъване." },
-    ],
-    hacks: [
-      "Дърпай лоста към бедрата като да го „хвърлиш“ под себе си.",
-      "Ниски лостове са твой приятел – учиш прехода с крака на земята.",
-      "Ако не стигаш над лоста – върни се на експлозивните набирания, не на muscle-up-а.",
-    ],
-    wrong: "Чикън уинг – единият лакът минава първи, ритане с крака.",
-    right: "Двата лакътя едновременно, дърпане към корема, чист преход.",
-  },
-  {
-    slug: "back-lever",
-    name: "Задна везна",
-    nameEn: "Back lever",
-    level: "Среден+",
-    tagline: "Хоризонтално тяло с лице към земята под лоста.",
-    prerequisites: ["10 набирания", "German hang 20 сек. без болка", "15 кофички"],
-    technique: [
-      "Ръцете изпънати, лопатките стегнати.",
-      "Тялото права линия, гърдите към пода.",
-      "Седалище стегнато, краката събрани.",
-    ],
-    steps: [
-      { title: "German hang", detail: "Разтягане на раменете.", target: "3 × 20 сек." },
-      { title: "Tuck back lever", detail: "Колене към гърдите.", target: "3 × 15 сек." },
-      { title: "Advanced tuck", detail: "Прав гръб, колене на 90°.", target: "3 × 12 сек." },
-      { title: "Straddle back lever", detail: "Разкрачени крака.", target: "3 × 10 сек." },
-      { title: "Пълна задна везна", detail: "Събрани крака.", target: "3 × 10 сек." },
-    ],
-    breakdown: [
-      { phase: "Скин дъ кет", cue: "Завърташ се назад през лоста." },
-      { phase: "Спускане", cue: "Бавно до хоризонтала." },
-      { phase: "Задържане", cue: "Натискай лоста надолу с правите ръце." },
-    ],
-    hacks: [
-      "Никога не скачай директно в нея – раменете не прощават. Загрей с German hang.",
-      "Вдишай и стегни – дишаш плитко по време на задръжката.",
-    ],
-    wrong: "Свити ръце, провиснал таз, краката под хоризонтала.",
-    right: "Прави ръце, права линия, хоризонтално тяло.",
-  },
-  {
-    slug: "front-lever",
-    name: "Предна везна",
-    nameEn: "Front lever",
-    level: "Напреднал",
-    tagline: "Върхът на дърпащата сила. Лице към небето.",
-    prerequisites: ["15 набирания", "Задна везна 10 сек.", "Hollow body 45 сек.", "Скин дъ кет x5"],
-    technique: [
-      "Прави ръце, лопатките надолу и назад.",
-      "Натискаш лоста към бедрата с правите ръце.",
-      "Тялото хоризонтално, лице нагоре, таз в линия.",
-    ],
-    steps: [
+    "breakdown": [
       {
-        title: "Tuck front lever",
-        detail: "Колене към гърдите, гърбът хоризонтален.",
-        target: "3 × 15 сек.",
+        "phase": "Setup",
+        "cue": "Elbows against your abdomen, hands close together."
       },
-      { title: "Advanced tuck", detail: "Прав гръб.", target: "3 × 12 сек." },
-      { title: "Един крак", detail: "Единият крак изпънат.", target: "3 × 10 сек." },
-      { title: "Straddle", detail: "Разкрачени крака.", target: "3 × 8 сек." },
-      { title: "Пълна предна везна", detail: "Събрани крака.", target: "3 × 5–10 сек." },
+      {
+        "phase": "Lean",
+        "cue": "Move shoulders ahead of your hands."
+      },
+      {
+        "phase": "Lift",
+        "cue": "Engage your glutes and straighten your legs."
+      },
+      {
+        "phase": "Hold",
+        "cue": "Breathe and make small fingertip corrections."
+      }
     ],
-    breakdown: [
-      { phase: "Висене", cue: "Активни лопатки, hollow." },
-      { phase: "Вдигане", cue: "Натисни лоста към бедрата." },
-      { phase: "Задържане", cue: "Таза горе, гледай нагоре." },
-      { phase: "Изход", cue: "Контролирано надолу, без пускане." },
+    "hacks": [
+      "Try low parallel bars first to reduce wrist strain.",
+      "Hands closer together can make balance more stable.",
+      "Place a cushion in front of you for your first attempts."
     ],
-    hacks: [
-      "Негативи от инвертирано висене до хоризонтала – най-бързият прогрес.",
-      "Ластик под кръста ти дава чувството за пълната позиция.",
-      "Гърбът прави 80% от работата – тренирай front lever rows.",
-    ],
-    wrong: "Свити лакти, падащ таз, глава напред.",
-    right: "Прави ръце, хоризонтален таз, натискане към бедрата.",
+    "wrong": "Hands facing forward, elbows away from the abdomen, too little forward lean and feet staying grounded.",
+    "right": "Hands turned 90° or 180°, elbows on the lower abdomen; lean the whole body forward until the feet lift."
   },
+  {
+    "slug": "frog-stand",
+    "name": "Frog Stand",
+    "nameEn": "Frog stand",
+    "level": "Beginner+",
+    "tagline": "Your hand-balancing journey starts here.",
+    "prerequisites": [
+      "10-second elbow lever",
+      "15 push-ups"
+    ],
+    "technique": [
+      "Place hands shoulder-width apart with fingers spread.",
+      "Rest knees on the outside of your elbows.",
+      "Lean forward until your feet leave the floor.",
+      "Balance with your fingers: press fingertips down if you tip forward."
+    ],
+    "steps": [
+      {
+        "title": "Squat with hands down",
+        "detail": "Knees on elbows, feet on the floor.",
+        "target": "3 × 20 sec"
+      },
+      {
+        "title": "Single-foot lift",
+        "detail": "Shift your weight forward.",
+        "target": "3 × 8 per leg"
+      },
+      {
+        "title": "Frog stand",
+        "detail": "Hold both feet off the floor.",
+        "target": "3 × 20 sec"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Setup",
+        "cue": "Hands down, elbows bent, knees on elbows."
+      },
+      {
+        "phase": "Lean",
+        "cue": "Move shoulders ahead of wrists."
+      },
+      {
+        "phase": "Balance",
+        "cue": "Use your fingertips as brakes."
+      }
+    ],
+    "hacks": [
+      "Look forward rather than between your hands to avoid rolling over.",
+      "A block under your feet makes the first attempts easier."
+    ],
+    "wrong": "No squat, hands outside the legs, elbows at 45° and no finger or palm pressure.",
+    "right": "Squat with hands between your legs, fingers forward; press fingers to stop tipping forward and palms to stop tipping back."
+  },
+  {
+    "slug": "crow-stand",
+    "name": "Crow Stand",
+    "nameEn": "Crow stand",
+    "level": "Beginner+",
+    "tagline": "Build on the frog stand with straighter arms and stronger support.",
+    "prerequisites": [
+      "20-second frog stand",
+      "20 push-ups"
+    ],
+    "technique": [
+      "Rest knees high on your triceps, close to your armpits.",
+      "Keep your arms almost straight.",
+      "Lift your hips and bring your feet together."
+    ],
+    "steps": [
+      {
+        "title": "Frog stand",
+        "detail": "Build a stable foundation.",
+        "target": "3 × 20 sec"
+      },
+      {
+        "title": "Higher knees",
+        "detail": "Move knees toward armpits and straighten your arms further.",
+        "target": "3 × 10 sec"
+      },
+      {
+        "title": "Crow stand",
+        "detail": "Straight arms, hips high.",
+        "target": "3 × 20 sec"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Setup",
+        "cue": "Position knees high on your arms."
+      },
+      {
+        "phase": "Lean",
+        "cue": "Shift your hips over your hands."
+      },
+      {
+        "phase": "Hold",
+        "cue": "Push the floor away and round your upper back."
+      }
+    ],
+    "hacks": [
+      "Round your back like a cat to gain more height.",
+      "Place your feet on a block to practice the position."
+    ],
+    "wrong": "Performing a frog stand instead of a crow stand, without finger or palm pressure.",
+    "right": "Start in a half squat with knees on the triceps; lean forward until the feet float and balance with palms and fingers."
+  },
+  {
+    "slug": "handstand",
+    "name": "Handstand",
+    "nameEn": "Handstand",
+    "level": "Intermediate",
+    "tagline": "Your world upside down. Patience matters as much as strength.",
+    "prerequisites": [
+      "20-second crow stand",
+      "30-second chest-to-wall handstand",
+      "Healthy wrists"
+    ],
+    "technique": [
+      "Place hands shoulder-width apart with fingers spread.",
+      "Push shoulders up toward your ears (elevation).",
+      "Keep ribs tucked and glutes engaged for a straight line.",
+      "Balance with your fingertips and palms, not your legs."
+    ],
+    "steps": [
+      {
+        "title": "Back-to-wall handstand",
+        "detail": "Build strength and wrist tolerance.",
+        "target": "3 × 30 sec"
+      },
+      {
+        "title": "Chest-to-wall handstand",
+        "detail": "Walk your feet up the wall to learn a straight line.",
+        "target": "3 × 45 sec"
+      },
+      {
+        "title": "Wall toe pulls",
+        "detail": "Lift one foot, then both, away from the wall.",
+        "target": "10 attempts"
+      },
+      {
+        "title": "Freestanding kick-up",
+        "detail": "Kick up and hold in open space.",
+        "target": "20 attempts / day"
+      },
+      {
+        "title": "Freestanding handstand",
+        "detail": "Balance without a wall.",
+        "target": "30 sec"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Kick-up",
+        "cue": "Hands on the floor, kick with a straight leg."
+      },
+      {
+        "phase": "Align",
+        "cue": "Stack wrists, shoulders, hips and ankles."
+      },
+      {
+        "phase": "Balance",
+        "cue": "Fingers stop tipping forward; palms stop tipping back."
+      },
+      {
+        "phase": "Exit",
+        "cue": "Turn sideways into a safe cartwheel-style exit."
+      }
+    ],
+    "hacks": [
+      "Learn a sideways exit first. Fear can hold you back more than strength.",
+      "Train briefly every day: 10 minutes daily beats one hour once a week.",
+      "Push through your shoulders to stay upright and avoid a banana-shaped back."
+    ],
+    "wrong": "Bent arms, feet too far from the hands, insufficient forward lean and flat hands with no active pressure.",
+    "right": "Hands and spread fingers forward, pike setup, stepping leg near the hands and kicking leg straight; push off, kick up, keep the head between the arms and balance with fingers and palms."
+  },
+  {
+    "slug": "tuck-press",
+    "name": "Tuck Press to Handstand",
+    "nameEn": "Tuck press to handstand",
+    "level": "Intermediate+",
+    "tagline": "Rise into a handstand without jumping: strength and control.",
+    "prerequisites": [
+      "20-second freestanding handstand",
+      "30-second crow stand",
+      "10-second L-sit"
+    ],
+    "technique": [
+      "From a crow stand or squat, shift shoulders well ahead of your hands.",
+      "Lift hips over your shoulders while keeping knees tucked.",
+      "Once hips are high, extend your legs upward."
+    ],
+    "steps": [
+      {
+        "title": "Compression",
+        "detail": "Seated leg lifts with your torso close to your thighs.",
+        "target": "3 × 12"
+      },
+      {
+        "title": "Tuck hold",
+        "detail": "Hold a tucked handstand by a wall.",
+        "target": "3 × 15 sec"
+      },
+      {
+        "title": "Negatives",
+        "detail": "Lower from handstand into tuck and crow.",
+        "target": "3 × 5"
+      },
+      {
+        "title": "Tuck press",
+        "detail": "Press from a squat into a tucked handstand.",
+        "target": "3 × 3"
+      },
+      {
+        "title": "Press to handstand",
+        "detail": "Extend into a full handstand.",
+        "target": "3 × 3"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Setup",
+        "cue": "Hands down, knees toward your chest."
+      },
+      {
+        "phase": "Lean",
+        "cue": "Move shoulders well ahead of wrists."
+      },
+      {
+        "phase": "Rise",
+        "cue": "Lift hips upward."
+      },
+      {
+        "phase": "Extend",
+        "cue": "Reach legs up and return shoulders over your hands."
+      }
+    ],
+    "hacks": [
+      "Use blocks under your hands to create more space for your hips.",
+      "Negatives are your secret weapon: practice them before you can press upward."
+    ],
+    "wrong": "Bending arms beyond 90°, not leaning forward enough and lacking strength to lift and tuck the legs.",
+    "right": "Squat with hands slightly forward; press through the palms, slowly float and tuck the legs toward the chest, balance with fingers and extend into handstand."
+  },
+  {
+    "slug": "hspu",
+    "name": "Handstand Push-up",
+    "nameEn": "Handstand push-up",
+    "level": "Advanced",
+    "tagline": "Your full bodyweight overhead. Pure shoulder strength.",
+    "prerequisites": [
+      "5 chest-to-wall handstand push-ups",
+      "60-second wall handstand",
+      "15 dips"
+    ],
+    "technique": [
+      "Your head and hands form a triangle on the floor.",
+      "Point elbows forward, not out to the sides.",
+      "Lower to a light head touch, then press up."
+    ],
+    "steps": [
+      {
+        "title": "Pike push-ups",
+        "detail": "Hips high, head toward the floor.",
+        "target": "3 × 12"
+      },
+      {
+        "title": "Elevated pike push-ups",
+        "detail": "Feet on a bench to load your shoulders more.",
+        "target": "3 × 10"
+      },
+      {
+        "title": "Wall negatives",
+        "detail": "Lower for 5 seconds.",
+        "target": "3 × 4"
+      },
+      {
+        "title": "Wall handstand push-ups",
+        "detail": "Perform full repetitions.",
+        "target": "3 × 5"
+      },
+      {
+        "title": "Freestanding HSPU",
+        "detail": "Without a wall: advanced control.",
+        "target": "1–3"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Top",
+        "cue": "Handstand with shoulders elevated."
+      },
+      {
+        "phase": "Lower",
+        "cue": "Move your head ahead of your hands to form a triangle."
+      },
+      {
+        "phase": "Bottom",
+        "cue": "Light touch without relaxing."
+      },
+      {
+        "phase": "Push",
+        "cue": "Bring your head back between your arms."
+      }
+    ],
+    "hacks": [
+      "Place a cushion under your head to practice with less fear.",
+      "Keep elbows at about 45° toward the wall to protect your shoulders."
+    ],
+    "wrong": "Only lowering with elbows flared, then failing to drive the legs above the head on the return, arching the body.",
+    "right": "Elbows forward, a controlled negative and an active leg drive above the head when returning to handstand."
+  },
+  {
+    "slug": "muscle-up",
+    "name": "Muscle-up",
+    "nameEn": "Muscle-up",
+    "level": "Intermediate+",
+    "tagline": "From hanging to above the bar in one movement.",
+    "prerequisites": [
+      "8 explosive chest-to-bar pull-ups",
+      "15 parallel-bar dips"
+    ],
+    "technique": [
+      "Use a false grip or standard shoulder-width grip.",
+      "Begin with a small hollow swing back, then pull sharply toward your abdomen.",
+      "Rotate your wrists and bring your chest above the bar.",
+      "Finish with a straight-bar dip to full support."
+    ],
+    "steps": [
+      {
+        "title": "Chest-to-bar pull-ups",
+        "detail": "Touch the bar with your chest.",
+        "target": "3 × 10"
+      },
+      {
+        "title": "Explosive pull-ups",
+        "detail": "Pull until the bar reaches your abdomen.",
+        "target": "5 × 3"
+      },
+      {
+        "title": "Straight-bar dips",
+        "detail": "Learn the top phase.",
+        "target": "3 × 10"
+      },
+      {
+        "title": "Negative muscle-ups",
+        "detail": "Lower slowly through the transition.",
+        "target": "3 × 3"
+      },
+      {
+        "title": "Band-assisted muscle-ups",
+        "detail": "Use a band to assist the transition.",
+        "target": "3 × 3"
+      },
+      {
+        "title": "Full muscle-up",
+        "detail": "Clean repetitions without kicking.",
+        "target": "3 × 1–3"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Swing",
+        "cue": "Small hollow movement back, no large swing."
+      },
+      {
+        "phase": "Pull",
+        "cue": "Bring the bar toward your abdomen, not your chin."
+      },
+      {
+        "phase": "Transition",
+        "cue": "Rotate wrists and bring your chest over the bar."
+      },
+      {
+        "phase": "Dip",
+        "cue": "Press to full arm extension."
+      }
+    ],
+    "hacks": [
+      "Pull the bar toward your thighs as if throwing it beneath you.",
+      "Use a low bar to learn the transition with feet on the floor.",
+      "If you cannot get above the bar, return to explosive pull-ups.",
+      "Aim to get your chest above the bar, not just your chin."
+    ],
+    "wrong": "Pulling like a normal pull-up, poor false grip, no leg kip and a swing timed too early or late.",
+    "right": "Pull explosively as you return from the forward position, lift knees high toward the chest and bring the chest over the bar."
+  },
+  {
+    "slug": "back-lever",
+    "name": "Back Lever",
+    "nameEn": "Back lever",
+    "level": "Intermediate+",
+    "tagline": "A horizontal body beneath the bar, facing the ground.",
+    "prerequisites": [
+      "10 pull-ups",
+      "20-second pain-free German hang",
+      "15 dips"
+    ],
+    "technique": [
+      "Keep arms straight and shoulder blades engaged.",
+      "Maintain a straight body line with chest facing the ground.",
+      "Engage glutes and keep legs together."
+    ],
+    "steps": [
+      {
+        "title": "German hang",
+        "detail": "Prepare shoulder mobility.",
+        "target": "3 × 20 sec"
+      },
+      {
+        "title": "Tuck back lever",
+        "detail": "Bring knees toward your chest.",
+        "target": "3 × 15 sec"
+      },
+      {
+        "title": "Advanced tuck",
+        "detail": "Straight back, knees at 90°.",
+        "target": "3 × 12 sec"
+      },
+      {
+        "title": "Straddle back lever",
+        "detail": "Extend legs apart.",
+        "target": "3 × 10 sec"
+      },
+      {
+        "title": "Full back lever",
+        "detail": "Keep legs together.",
+        "target": "3 × 10 sec"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Skin the cat",
+        "cue": "Rotate backward through the bar."
+      },
+      {
+        "phase": "Lower",
+        "cue": "Lower slowly to horizontal."
+      },
+      {
+        "phase": "Hold",
+        "cue": "Press the bar down with straight arms."
+      }
+    ],
+    "hacks": [
+      "Never jump directly into the position; prepare your shoulders with a German hang.",
+      "Breathe in and brace, then breathe lightly during the hold."
+    ],
+    "wrong": "Retracted shoulder blades, a wide grip and anterior pelvic tilt.",
+    "right": "Protracted shoulder blades, a narrow grip, a slow negative into the hold and posterior pelvic tilt."
+  },
+  {
+    "slug": "front-lever",
+    "name": "Front Lever",
+    "nameEn": "Front lever",
+    "level": "Advanced",
+    "tagline": "The peak of pulling strength. Face toward the sky.",
+    "prerequisites": [
+      "15 pull-ups",
+      "10-second back lever",
+      "45-second hollow-body hold",
+      "5 skin-the-cat repetitions"
+    ],
+    "technique": [
+      "Keep arms straight and shoulder blades down and back.",
+      "Press the bar toward your thighs with straight arms.",
+      "Hold the body horizontal, face up and hips in line."
+    ],
+    "steps": [
+      {
+        "title": "Tuck front lever",
+        "detail": "Knees toward your chest, back horizontal.",
+        "target": "3 × 15 sec"
+      },
+      {
+        "title": "Advanced tuck",
+        "detail": "Maintain a straight back.",
+        "target": "3 × 12 sec"
+      },
+      {
+        "title": "One-leg front lever",
+        "detail": "Extend one leg.",
+        "target": "3 × 10 sec"
+      },
+      {
+        "title": "Straddle front lever",
+        "detail": "Extend legs apart.",
+        "target": "3 × 8 sec"
+      },
+      {
+        "title": "Full front lever",
+        "detail": "Keep legs together.",
+        "target": "3 × 5–10 sec"
+      }
+    ],
+    "breakdown": [
+      {
+        "phase": "Hang",
+        "cue": "Active shoulder blades, hollow body."
+      },
+      {
+        "phase": "Raise",
+        "cue": "Press the bar toward your thighs."
+      },
+      {
+        "phase": "Hold",
+        "cue": "Keep hips high and look upward."
+      },
+      {
+        "phase": "Exit",
+        "cue": "Lower under control without letting go."
+      }
+    ],
+    "hacks": [
+      "Lower from an inverted hang to horizontal for effective negative practice.",
+      "A band under your hips helps you feel the full position.",
+      "Your back does most of the work: train front-lever rows."
+    ],
+    "wrong": "Bent arms, low hips, protracted shoulder blades and anterior pelvic tilt.",
+    "right": "Locked straight arms, neutral hips and extended feet."
+  }
 ];
 
 export function getSkill(slug: string): Skill | undefined {

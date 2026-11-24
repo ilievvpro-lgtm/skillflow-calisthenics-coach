@@ -1,24 +1,17 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { Check, Play, X } from "lucide-react";
-import { useState } from "react";
+import { ChevronRight, Check, X } from "lucide-react";
 
-import { PageHeader } from "@/components/app/PageHeader";
+import { LevelBadge } from "@/components/app/LevelBadge";
 import { skills, type Skill } from "@/data/skills";
 import { techniqueVideos } from "@/data/videos";
 
 export const Route = createFileRoute("/technique")({
   head: () => ({
     meta: [
-      { title: "Видео уроци: грешно и правилно – BAR SKILLS" },
-      {
-        name: "description",
-        content: "Виж всеки скил изпълнен грешно и правилно – и разбери разликата за секунди.",
-      },
-      { property: "og:title", content: "Видео уроци: грешно и правилно – BAR SKILLS" },
-      {
-        property: "og:description",
-        content: "Виж всеки скил изпълнен грешно и правилно – и разбери разликата за секунди.",
-      },
+      { title: "Technique library – all 12 skills | CALISTHIC" },
+      { name: "description", content: "Explore all 12 calisthenics skills with 24 wrong-and-right animated technique demonstrations." },
+      { property: "og:title", content: "Technique library | CALISTHIC" },
+      { property: "og:description", content: "All 12 skills, with common mistakes and correct-form video demonstrations." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -26,91 +19,67 @@ export const Route = createFileRoute("/technique")({
   component: TechniquePage,
 });
 
-function VideoSlot({
-  kind,
-  src,
-  skill,
-}: {
-  kind: "wrong" | "right";
-  src: string | undefined;
-  skill: Skill;
-}) {
+function VideoCard({ kind, src, poster, skill }: { kind: "wrong" | "right"; src: string | undefined; poster: string | undefined; skill: Skill }) {
   const isWrong = kind === "wrong";
   return (
-    <article
-      className={`overflow-hidden rounded-3xl border bg-card shadow-card ${isWrong ? "border-destructive/40" : "border-success/40"}`}
-    >
-      <div className="relative aspect-[4/5] bg-muted">
-        {src ? (
-          <video src={src} controls playsInline loop className="size-full object-cover" />
-        ) : (
-          <div className="grid size-full place-items-center">
-            <div className="flex flex-col items-center gap-3 text-muted-foreground">
-              <span className="grid size-14 place-items-center rounded-full border border-border bg-background/60">
-                <Play className="size-6" />
-              </span>
-              <span className="text-xs">Видеото идва скоро</span>
-            </div>
-          </div>
-        )}
-        <span
-          className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${isWrong ? "bg-destructive text-destructive-foreground" : "bg-success text-success-foreground"}`}
-        >
-          {isWrong ? <X className="size-3.5" /> : <Check className="size-3.5" />}
-          {isWrong ? "Грешно" : "Правилно"}
+    <article className="w-[78%] shrink-0 snap-center overflow-hidden rounded-xl border border-border bg-card">
+      <div className="relative aspect-[9/16] bg-muted">
+        <video src={src} poster={poster} controls playsInline loop muted preload="none" aria-label={`${skill.name} — ${isWrong ? "wrong" : "right"}`} className="size-full object-contain" />
+        <span className={`pointer-events-none absolute left-2.5 top-2.5 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold ${isWrong ? "bg-destructive text-destructive-foreground" : "bg-success text-success-foreground"}`}>
+          {isWrong ? <X className="size-3" /> : <Check className="size-3" />}
+          {isWrong ? "Wrong" : "Right"}
         </span>
       </div>
-      <p className="p-4 text-sm leading-relaxed text-card-foreground">
-        {isWrong ? skill.wrong : skill.right}
-      </p>
+      <p className="p-3.5 text-sm leading-relaxed text-muted-foreground">{isWrong ? skill.wrong : skill.right}</p>
     </article>
   );
 }
 
 function TechniquePage() {
-  const [slug, setSlug] = useState(skills[0]?.slug ?? "");
-  const skill = skills.find((s) => s.slug === slug) ?? skills[0];
-  if (!skill) return null;
-  const videos = techniqueVideos[skill.slug] ?? {};
-
   return (
     <div>
-      <PageHeader eyebrow="Technique · Видео уроци" title={<>Грешно vs. правилно</>}>
-        Аз изпълнявам всеки скил двойно – с най-честата грешка и с чиста техника.
-      </PageHeader>
+      <header className="px-5 pt-[max(1.25rem,env(safe-area-inset-top))]">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Technique</p>
+        <h1 className="mt-1 text-[1.8rem] font-extrabold leading-tight">Wrong vs right</h1>
+        <p className="mt-1 text-sm text-muted-foreground">12 skills · 24 videos. Swipe to see the fix.</p>
+      </header>
 
-      <div className="no-scrollbar -mt-1 flex gap-2 overflow-x-auto px-5 pb-4" role="tablist">
-        {skills.map((s) => (
-          <button
-            key={s.slug}
-            role="tab"
-            aria-selected={s.slug === skill.slug}
-            onClick={() => setSlug(s.slug)}
-            className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-              s.slug === skill.slug
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-card/70 text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {s.name}
-          </button>
-        ))}
-      </div>
+      <nav aria-label="Jump to a skill" className="sticky top-0 z-30 mt-4 border-b border-border bg-background/95 backdrop-blur-xl">
+        <ul className="flex gap-2 overflow-x-auto px-5 py-3">
+          {skills.map((skill, i) => (
+            <li key={skill.slug} className="shrink-0">
+              <a href={`#${skill.slug}`} className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-card px-3.5 text-sm font-semibold active:border-primary">
+                <span className="text-xs tabular-nums text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                {skill.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-      <section key={skill.slug} className="animate-rise space-y-4 px-5">
-        <div className="grid grid-cols-2 gap-3">
-          <VideoSlot kind="wrong" src={videos.wrong} skill={skill} />
-          <VideoSlot kind="right" src={videos.right} skill={skill} />
-        </div>
-        <Link
-          to="/skills/$slug"
-          params={{ slug: skill.slug }}
-          className="flex items-center justify-between rounded-2xl border border-border bg-card/70 px-4 py-4 text-sm font-semibold text-foreground transition-colors hover:border-primary/60"
-        >
-          <span>Пълен урок: {skill.name}</span>
-          <span className="text-primary">→</span>
-        </Link>
-      </section>
+      {skills.map((skill, index) => {
+        const v = techniqueVideos[skill.slug];
+        return (
+          <section id={skill.slug} key={skill.slug} aria-labelledby={`${skill.slug}-title`} className="scroll-mt-16 border-b border-border py-6">
+            <div className="flex items-start justify-between gap-3 px-5">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold tabular-nums text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+                  <LevelBadge level={skill.level} />
+                </div>
+                <h2 id={`${skill.slug}-title`} className="mt-1.5 text-xl font-bold">{skill.name}</h2>
+              </div>
+              <Link to="/skills/$slug" params={{ slug: skill.slug }} className="inline-flex shrink-0 items-center gap-0.5 pt-6 text-sm font-semibold text-primary">
+                Lesson <ChevronRight className="size-4" />
+              </Link>
+            </div>
+            <div className="mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 scroll-px-5">
+              <VideoCard kind="wrong" src={v?.wrong} poster={v?.wrongPoster} skill={skill} />
+              <VideoCard kind="right" src={v?.right} poster={v?.rightPoster} skill={skill} />
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

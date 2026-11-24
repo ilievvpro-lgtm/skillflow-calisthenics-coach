@@ -10,6 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CoachRouteImport } from './routes/coach'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as PaywallRouteImport } from './routes/paywall'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as TechniqueRouteImport } from './routes/technique'
 import { Route as ApiCoachRouteImport } from './routes/api/coach'
@@ -19,6 +25,36 @@ import { Route as SkillsSlugRouteImport } from './routes/skills.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachRoute = CoachRouteImport.update({
+  id: '/coach',
+  path: '/coach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaywallRoute = PaywallRouteImport.update({
+  id: '/paywall',
+  path: '/paywall',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoryRoute = StoryRouteImport.update({
@@ -49,6 +85,12 @@ const SkillsSlugRoute = SkillsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/coach': typeof CoachRoute
+  '/home': typeof HomeRoute
+  '/map': typeof MapRoute
+  '/onboarding': typeof OnboardingRoute
+  '/paywall': typeof PaywallRoute
   '/story': typeof StoryRoute
   '/technique': typeof TechniqueRoute
   '/api/coach': typeof ApiCoachRoute
@@ -57,6 +99,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/coach': typeof CoachRoute
+  '/home': typeof HomeRoute
+  '/map': typeof MapRoute
+  '/onboarding': typeof OnboardingRoute
+  '/paywall': typeof PaywallRoute
   '/story': typeof StoryRoute
   '/technique': typeof TechniqueRoute
   '/api/coach': typeof ApiCoachRoute
@@ -66,6 +114,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/coach': typeof CoachRoute
+  '/home': typeof HomeRoute
+  '/map': typeof MapRoute
+  '/onboarding': typeof OnboardingRoute
+  '/paywall': typeof PaywallRoute
   '/story': typeof StoryRoute
   '/technique': typeof TechniqueRoute
   '/api/coach': typeof ApiCoachRoute
@@ -75,12 +129,41 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/story' | '/technique' | '/api/coach' | '/skills/$slug' | '/skills/'
+    | '/'
+    | '/auth'
+    | '/coach'
+    | '/home'
+    | '/map'
+    | '/onboarding'
+    | '/paywall'
+    | '/story'
+    | '/technique'
+    | '/api/coach'
+    | '/skills/$slug'
+    | '/skills/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/story' | '/technique' | '/api/coach' | '/skills/$slug' | '/skills'
+  to:
+    | '/'
+    | '/auth'
+    | '/coach'
+    | '/home'
+    | '/map'
+    | '/onboarding'
+    | '/paywall'
+    | '/story'
+    | '/technique'
+    | '/api/coach'
+    | '/skills/$slug'
+    | '/skills'
   id:
     | '__root__'
     | '/'
+    | '/auth'
+    | '/coach'
+    | '/home'
+    | '/map'
+    | '/onboarding'
+    | '/paywall'
     | '/story'
     | '/technique'
     | '/api/coach'
@@ -90,6 +173,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CoachRoute: typeof CoachRoute
+  HomeRoute: typeof HomeRoute
+  MapRoute: typeof MapRoute
+  OnboardingRoute: typeof OnboardingRoute
+  PaywallRoute: typeof PaywallRoute
   StoryRoute: typeof StoryRoute
   TechniqueRoute: typeof TechniqueRoute
   ApiCoachRoute: typeof ApiCoachRoute
@@ -104,6 +193,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coach': {
+      id: '/coach'
+      path: '/coach'
+      fullPath: '/coach'
+      preLoaderRoute: typeof CoachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paywall': {
+      id: '/paywall'
+      path: '/paywall'
+      fullPath: '/paywall'
+      preLoaderRoute: typeof PaywallRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/story': {
@@ -146,6 +277,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CoachRoute: CoachRoute,
+  HomeRoute: HomeRoute,
+  MapRoute: MapRoute,
+  OnboardingRoute: OnboardingRoute,
+  PaywallRoute: PaywallRoute,
   StoryRoute: StoryRoute,
   TechniqueRoute: TechniqueRoute,
   ApiCoachRoute: ApiCoachRoute,

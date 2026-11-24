@@ -1,0 +1,45 @@
+{
+  "source": "https://github.com/ilievvpro-lgtm/skillflow-calisthenics-coach",
+  "source_revision": "d81e13f22d79b7294bbdddae0b1d4a9fa18b1269",
+  "source_browser_comparison": "blocked: repository URL supplied, no deployed app URL",
+  "preview_checks": [
+    {
+      "viewport": "desktop",
+      "skill_count": 12,
+      "tabs": [
+        "Стъпки",
+        "Разбивка",
+        "Хак tips",
+        "Техника"
+      ],
+      "photo_loaded": true,
+      "horizontal_overflow": false,
+      "errors": []
+    },
+    {
+      "control": "AI coach",
+      "http_status": 200,
+      "visible_reply": "Мога 5 набирания. Дай ми кратък съвет за прогрес.\n\nСупер база! 💪 За",
+      "alert": []
+    },
+    {
+      "viewport": "phone",
+      "skill_count": 12,
+      "tabs": [
+        "Стъпки",
+        "Разбивка",
+        "Хак tips",
+        "Техника"
+      ],
+      "photo_loaded": true,
+      "horizontal_overflow": false,
+      "errors": []
+    }
+  ],
+  "limitations": [
+    "Technique videos absent from source; media playback blocked.",
+    "Instagram uses the original placeholder handle.",
+    "AI coach returned HTTP 200 and visible streamed text; full completion could not be verified."
+  ],
+  "screenshots": "/tmp/browser/skillflow/"
+}

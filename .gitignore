@@ -16,13 +16,9 @@ dist-ssr
 .nitro
 *.local
 
-# Vercel
-.vercel
-
-# Env
-.env
-.env.*
-!.env.example
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
 
 # Editor directories and files
 .vscode/*
@@ -34,9 +30,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Preview screenshots
-.preview
-
-# Artifact preview build
-dist-artifact

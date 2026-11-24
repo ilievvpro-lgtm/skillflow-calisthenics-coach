@@ -20,8 +20,8 @@ describe("skills roadmap", () => {
     ]);
   });
 
-  it("requires 10 chest-to-bar pull-ups before the muscle-up", () => {
+  it("requires 8 explosive chest-to-bar pull-ups before the muscle-up", () => {
     const muscleUp = skills.find((s) => s.slug === "muscle-up");
-    expect(muscleUp?.prerequisites).toContain("10 набирания до гърди");
+    expect(muscleUp?.prerequisites).toContain("8 explosive chest-to-bar pull-ups");
   });
 });

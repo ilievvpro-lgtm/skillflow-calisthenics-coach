@@ -3,20 +3,20 @@ import { Instagram, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { brand } from "@/data/brand";
-import heroImg from "@/assets/hero-front-lever.jpg";
+import heroAsset from "@/assets/plamen-full-handstand.png.asset.json";
 
 export const Route = createFileRoute("/story")({
   head: () => ({
     meta: [
-      { title: `Моята история – ${brand.creatorName} | BAR SKILLS` },
+      { title: `My story – ${brand.creatorName} | CALISTHIC` },
       {
         name: "description",
-        content: "Как започнах без нито едно набиране и стигнах до предната везна. Всеки може.",
+        content: "I started with 3 pull-ups and 0 push-ups. If I can do it, so can you.",
       },
-      { property: "og:title", content: `Моята история – ${brand.creatorName} | BAR SKILLS` },
+      { property: "og:title", content: `My story – ${brand.creatorName} | CALISTHIC` },
       {
         property: "og:description",
-        content: "Как започнах без нито едно набиране и стигнах до предната везна. Всеки може.",
+        content: "I started with 3 pull-ups and 0 push-ups. If I can do it, so can you.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,64 +27,62 @@ export const Route = createFileRoute("/story")({
 
 const chapters = [
   {
-    title: "Нула набирания",
-    text: "Първия ден на лоста висях 10 секунди и паднах. Нито едно набиране. Около мен хора правеха muscle-up-и, а аз се срамувах да се кача.",
+    title: "3 pull-ups. 0 push-ups.",
+    text: "I started with 3 pull-ups and 0 push-ups. People around me were doing muscle-ups, while I was too embarrassed to even get on the bar.",
   },
   {
-    title: "Месеците, в които нищо не става",
-    text: "Имаше седмици без никакъв прогрес. Стойката на ръце ми отне повече от година. Не защото нямах сила – а защото исках бързо.",
+    title: "The months without progress",
+    text: "There were weeks with no progress at all. Learning a handstand took me more than a year. Not because I lacked strength, but because I wanted results too quickly.",
   },
   {
-    title: "Защо не спрях",
-    text: "Спрях да се сравнявам с другите и започнах да се сравнявам с мен от вчера. Едно повторение повече. Една секунда повече. Това е всичко.",
+    title: "Why I kept going",
+    text: "I stopped comparing myself with others and started comparing myself with who I was yesterday. One more repetition. One more second. That is all it takes.",
   },
 ];
 
 function StoryPage() {
   return (
     <div>
-      <div className="relative h-[62dvh] min-h-[420px] overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Атлет задържа предна везна на лост при залез"
-          className="absolute inset-0 size-full object-cover"
-          width={1024}
-          height={1536}
-        />
-        <div className="absolute inset-0 bg-fade-bottom" />
-        <div className="absolute inset-x-0 bottom-0 animate-rise px-5 pb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            My Story · {brand.creatorName}
-          </p>
+      <div className="pt-[max(1.25rem,env(safe-area-inset-top))]">
+        <header className="w-full animate-rise px-5 pb-2 pt-4">
+          <p className="text-xs font-semibold uppercase tracking-normal text-primary">My Story · {brand.creatorName}</p>
           <h1 className="mt-2 text-[2.4rem] font-extrabold leading-[0.98]">
-            Не съм роден <span className="text-gradient-primary">силен.</span>
+            I was not born <span className="text-gradient-primary">strong.</span>
           </h1>
-        </div>
+        </header>
       </div>
 
       <div className="space-y-4 px-5 pt-2">
         {chapters.map((c, i) => (
-          <article
-            key={c.title}
-            className="animate-rise rounded-3xl border border-border bg-card p-5 shadow-card"
-            style={{ animationDelay: `${i * 60}ms` }}
-          >
+          <article key={c.title} className="animate-rise border-b border-border py-5" style={{ animationDelay: `${i * 60}ms` }}>
             <p className="font-display text-xs font-bold text-primary">0{i + 1}</p>
             <h2 className="mt-1 text-lg font-bold">{c.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
           </article>
         ))}
 
-        <blockquote className="rounded-3xl bg-gradient-primary p-6 text-primary-foreground shadow-glow">
+        <blockquote className="rounded-lg bg-gradient-primary p-6 text-primary-foreground shadow-glow">
           <Quote className="size-6 opacity-70" />
           <p className="mt-3 font-display text-xl font-extrabold leading-tight">
-            Ако аз го направих от нула – и ти можеш. Просто не спирай.
+            If I could build this from zero, so can you. Just keep going.
           </p>
           <footer className="mt-3 text-sm font-medium opacity-80">— {brand.creatorName}</footer>
         </blockquote>
 
-        <div className="rounded-3xl border border-border bg-card p-5 text-center shadow-card">
-          <p className="text-sm text-muted-foreground">Следи тренировките ми всеки ден</p>
+        <figure className="overflow-hidden rounded-xl border border-border bg-card">
+          <img
+            src={heroAsset.url}
+            alt="Plamen holding a handstand at sunset"
+            className="block h-auto w-full"
+            width={1025}
+            height={1920}
+            loading="lazy"
+          />
+          <figcaption className="px-4 py-3 text-sm text-muted-foreground">{brand.creatorName} today — after starting from 0 push-ups.</figcaption>
+        </figure>
+
+        <div className="border-t border-border py-5 text-center">
+          <p className="text-sm text-muted-foreground">Follow my daily training</p>
           <Button asChild variant="hero" size="xl" className="mt-4 w-full">
             <a href={brand.instagramUrl} target="_blank" rel="noreferrer">
               <Instagram className="size-5" /> @{brand.instagramHandle}
